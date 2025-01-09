@@ -18,7 +18,7 @@ services:
     build:
       context: client
       dockerfile: Dockerfile
-    container_name: resume-console
+    container_name: resume-client
     restart: always
     # ports:
     #   - "3000:3000"
