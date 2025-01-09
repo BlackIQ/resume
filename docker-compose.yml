@@ -14,11 +14,11 @@ services:
     env_file:
       - ./api/.env.local
 
-  console:
+  client:
     build:
-      context: console
+      context: client
       dockerfile: Dockerfile
-    container_name: openhubble-console
+    container_name: resume-console
     restart: always
     # ports:
     #   - "3000:3000"
