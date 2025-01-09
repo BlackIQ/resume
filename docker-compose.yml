@@ -31,13 +31,13 @@ services:
     build:
       context: gateway
       dockerfile: Dockerfile
-    container_name: openhubble-gateway
+    container_name: resume-gateway
     restart: always
     # ports:
     #   - "443:443"
     #   - "80:80"
     networks:
-      - openhubble-network
+      - resume-network
       - gateway-network
     volumes:
       - /volumes/resume/cdn:/var/www/files
