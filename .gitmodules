@@ -7,3 +7,6 @@
 [submodule "client"]
 	path = client
 	url = https://github.com/BlackIQ/amirhossein.info
+[submodule "gateway"]
+	path = gateway
+	url = https://github.com/BlackIQ/resume-gateway
