@@ -11,6 +11,7 @@ services:
     #   - "8000:8000"
     networks:
       - resume-network
+      - application-network
     env_file:
       - ./api/.env.local
 
@@ -24,6 +25,7 @@ services:
     #   - "3000:3000"
     networks:
       - resume-network
+      - application-network
     env_file:
       - ./client/.env.local
 
@@ -38,6 +40,7 @@ services:
     #   - "80:80"
     networks:
       - resume-network
+      - application-network
       - gateway-network
     volumes:
       - /volumes/resume/cdn:/var/www/files
@@ -46,4 +49,6 @@ networks:
   resume-network:
     external: true
   gateway-network:
+    external: true
+  application-network:
     external: true
