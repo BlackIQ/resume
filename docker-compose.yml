@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: api
+      dockerfile: Dockerfile
+    container_name: resume-api
+    restart: always
+    # ports:
+    #   - "8000:8000"
+    networks:
+      - resume-network
+    env_file:
+      - ./api/.env.local
+
+  console:
+    build:
+      context: console
+      dockerfile: Dockerfile
+    container_name: openhubble-console
+    restart: always
+    # ports:
+    #   - "3000:3000"
+    networks:
+      - resume-network
+    env_file:
+      - ./client/.env.local
+
+  gateway:
+    build:
+      context: gateway
+      dockerfile: Dockerfile
+    container_name: openhubble-gateway
+    restart: always
+    # ports:
+    #   - "443:443"
+    #   - "80:80"
+    networks:
+      - openhubble-network
+      - gateway-network
+    volumes:
+      - /volumes/resume/cdn:/var/www/files
+
+networks:
+  resume-network:
+    external: true
+  gateway-network:
+    external: true
