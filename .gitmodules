@@ -1,6 +1,3 @@
-[submodule "gayeway"]
-	path = gayeway
-	url = https://github.com/BlackIQ/resume-gateway
 [submodule "api"]
 	path = api
 	url = https://github.com/BlackIQ/api.amirhossein.info
