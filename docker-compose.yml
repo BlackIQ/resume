@@ -7,10 +7,9 @@ services:
       dockerfile: Dockerfile
     container_name: resume-api
     restart: always
-    # ports:
-    #   - "8000:8000"
+    ports:
+      - 8000
     networks:
-      - resume-network
       - application-network
     env_file:
       - ./api/.env.local
@@ -21,10 +20,9 @@ services:
       dockerfile: Dockerfile
     container_name: resume-client
     restart: always
-    # ports:
-    #   - "3000:3000"
+    ports:
+      - 3000
     networks:
-      - resume-network
       - application-network
     env_file:
       - ./client/.env.local
@@ -35,20 +33,14 @@ services:
       dockerfile: Dockerfile
     container_name: resume-gateway
     restart: always
-    # ports:
-    #   - "443:443"
-    #   - "80:80"
+    ports:
+      - 443
+      - 80
     networks:
-      - resume-network
       - application-network
-      - gateway-network
     volumes:
       - /volumes/resume/cdn:/var/www/files
 
 networks:
-  resume-network:
-    external: true
-  gateway-network:
-    external: true
   application-network:
     external: true
