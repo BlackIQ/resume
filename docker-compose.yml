@@ -27,19 +27,19 @@ services:
     env_file:
       - ./client/.env.local
 
-  gateway:
-    build:
-      context: gateway
-      dockerfile: Dockerfile
-    container_name: resume-gateway
-    restart: always
-    ports:
-      - 443
-      - 80
-    networks:
-      - application-network
-    volumes:
-      - /volumes/resume/cdn:/var/www/files
+  # gateway:
+  #   build:
+  #     context: gateway
+  #     dockerfile: Dockerfile
+  #   container_name: resume-gateway
+  #   restart: always
+  #   ports:
+  #     - 443
+  #     - 80
+  #   networks:
+  #     - application-network
+  #   volumes:
+  #     - /volumes/resume/cdn:/var/www/files
 
 networks:
   application-network:
