@@ -1,32 +1,28 @@
 version: "3.9"
 
 services:
-  api:
+  backend:
     build:
       context: api
       dockerfile: Dockerfile
     container_name: resume-api
     restart: always
-    # ports:
-    #   - "8000:8000"
     networks:
       - application-network
     env_file:
       - ./api/.env.local
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/api/ping"]
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/base/ping"]
       interval: 30s
       timeout: 10s
       retries: 3
 
-  client:
+  frontend:
     build:
       context: client
       dockerfile: Dockerfile
     container_name: resume-client
     restart: always
-    # ports:
-    #   - "3000:3000"
     networks:
       - application-network
     env_file:
@@ -36,25 +32,6 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-
-  # gateway:
-  #   build:
-  #     context: gateway
-  #     dockerfile: Dockerfile
-  #   container_name: resume-gateway
-  #   restart: always
-  #   ports:
-  #     - "443:443"
-  #     - "80:80"
-  #   networks:
-  #     - application-network
-  #   volumes:
-  #     - /volumes/resume/cdn:/var/www/files
-  #   healthcheck:
-  #     test: ["CMD", "curl", "-f", "http://localhost"]
-  #     interval: 30s
-  #     timeout: 10s
-  #     retries: 3
 
 networks:
   application-network:
